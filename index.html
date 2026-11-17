@@ -3,22 +3,63 @@ const titles=['Harta','Makan','Telefon / Digital','Tazkiyah Diri','Dakwah'];
 const canvas=document.getElementById('resolutionCard');
 const ctx=canvas.getContext('2d');
 function linesFor(text,maxWidth,font){ctx.font=font;const out=[];for(const para of text.split(/\n/)){let line='';for(const word of para.split(/\s+/).filter(Boolean)){const next=line?line+' '+word:word;if(ctx.measureText(next).width>maxWidth&&line){out.push(line);line=word;}else line=next;}out.push(line||' ');}return out;}
+function roundBox(x,y,w,h,r,fill,stroke){
+ ctx.beginPath();ctx.roundRect(x,y,w,h,r);ctx.fillStyle=fill;ctx.fill();
+ if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=2;ctx.stroke();}
+}
+function leaf(x,y,angle,scale){
+ ctx.save();ctx.translate(x,y);ctx.rotate(angle);ctx.scale(scale,scale);
+ ctx.fillStyle='#537743';ctx.globalAlpha=.8;ctx.beginPath();ctx.moveTo(0,0);ctx.bezierCurveTo(65,-90,145,-100,195,-8);ctx.bezierCurveTo(115,35,48,35,0,0);ctx.fill();
+ ctx.strokeStyle='#a5b88b';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(10,0);ctx.lineTo(174,-8);ctx.stroke();ctx.restore();ctx.globalAlpha=1;
+}
+function measureEntry(value,width){
+ const font='29px system-ui, sans-serif';let lines=linesFor(value||'—',width,font);
+ return {lines,height:Math.max(270,118+lines.length*40+30)};
+}
+function drawEntry(x,y,w,h,label,emoji,value){
+ roundBox(x,y,w,h,25,'rgba(235,244,235,0.13)','rgba(232,245,230,0.55)');
+ ctx.textAlign='center';ctx.fillStyle='#ff9923';ctx.beginPath();ctx.arc(x+w/2,y+7,44,0,Math.PI*2);ctx.fill();
+ ctx.font='43px system-ui';ctx.fillStyle='#fff';ctx.fillText(emoji,x+w/2,y+22);
+ ctx.font='bold 32px system-ui';ctx.fillStyle='#ffa12b';ctx.fillText(label,x+w/2,y+88);
+ ctx.textAlign='left';ctx.fillStyle='#fff';ctx.font='29px system-ui';
+ const lines=linesFor(value||'—',w-58,'29px system-ui');
+ lines.forEach((line,i)=>ctx.fillText(line,x+28,y+136+i*40));
+}
+function drawBand(y,title,subtitle,orange){
+ roundBox(48,y,984,79,39,orange?'#ff9923':'#f0f4f0');
+ ctx.textAlign='left';ctx.fillStyle='#073326';ctx.font='bold 44px system-ui';ctx.fillText(title,91,y+54);
+ ctx.font='26px system-ui';ctx.fillText(subtitle,orange?300:262,y+51);
+}
 function generateCard(){
- const entries=[...document.querySelectorAll('.item textarea')].map((el,i)=>({title:titles[i],value:el.value.trim()})).filter(x=>x.value);
- if(!entries.length){alert('Isi sekurang-kurangnya satu resolusi dahulu.');return;}
- const name=document.getElementById('nama').value.trim();const W=1080,pad=85,inner=W-pad*2;
- const groups=entries.map(x=>({...x,lines:linesFor(x.value,inner-56,'36px system-ui, sans-serif')}));
- const headingHeight=240,footHeight=135;let total=headingHeight+footHeight+groups.reduce((a,g)=>a+92+g.lines.length*51+35,0);
- canvas.width=W;canvas.height=Math.max(1350,total);const H=canvas.height;
- ctx.fillStyle='#073326';ctx.fillRect(0,0,W,H);
- ctx.fillStyle='#f7a735';ctx.fillRect(0,0,W,13);
- ctx.textAlign='center';ctx.fillStyle='#ffad42';ctx.font='bold 27px system-ui';ctx.fillText('MUKHAYYAM TARBAWI 2026',W/2,88);
- ctx.fillStyle='#fff';ctx.font='bold 63px system-ui';ctx.fillText("RESOLUSI MUKHTAR ’26",W/2,160);
- ctx.font='30px system-ui';ctx.fillStyle='#d2e5d9';ctx.fillText('Daripada muhasabah kepada amal',W/2,210);
- let y=270;
- for(const g of groups){const blockH=92+g.lines.length*51+35;ctx.fillStyle='#f9fbf8';ctx.beginPath();ctx.roundRect(pad,y,inner,blockH,22);ctx.fill();ctx.fillStyle='#bd6b0b';ctx.textAlign='left';ctx.font='bold 39px system-ui';ctx.fillText(g.title,pad+28,y+57);ctx.fillStyle='#1b3d2f';ctx.font='36px system-ui';g.lines.forEach((line,i)=>ctx.fillText(line,pad+28,y+115+i*51));y+=blockH+20;}
- ctx.textAlign='center';ctx.fillStyle='#f7b65a';ctx.font='bold 31px system-ui';if(name)ctx.fillText(name.slice(0,45),W/2,H-88);ctx.fillStyle='#d3e4d9';ctx.font='25px system-ui';ctx.fillText('Resolusi peribadi • MUKHTAR 2026',W/2,H-40);
- document.getElementById('cardPanel').classList.add('show');document.getElementById('shareHint').textContent='';document.getElementById('cardPanel').scrollIntoView({behavior:'smooth',block:'start'});
+ const values=[...document.querySelectorAll('.item textarea')].map(el=>el.value.trim());
+ if(!values.some(Boolean)){alert('Isi sekurang-kurangnya satu resolusi dahulu.');return;}
+ const name=document.getElementById('nama').value.trim();
+ const top=[0,1,2].map(i=>measureEntry(values[i],260));
+ const bottom=[3,4].map(i=>measureEntry(values[i],400));
+ const topH=Math.max(...top.map(x=>x.height)),bottomH=Math.max(...bottom.map(x=>x.height));
+ const W=1080,topY=490,amalBandY=topY+topH+62,bottomY=amalBandY+139;
+ const H=bottomY+bottomH+135;
+ canvas.width=W;canvas.height=H;
+ const grad=ctx.createLinearGradient(0,0,W,H);grad.addColorStop(0,'#00291c');grad.addColorStop(.58,'#083527');grad.addColorStop(1,'#002b1c');
+ ctx.fillStyle=grad;ctx.fillRect(0,0,W,H);
+ leaf(850,45,.65,.88);leaf(16,325,-.45,.6);leaf(900,H-70,-.8,.9);leaf(5,H-250,.5,.5);
+ ctx.textAlign='center';ctx.fillStyle='#ff9923';ctx.font='bold 39px system-ui';ctx.fillText('RESOLUSI',W/2,76);
+ ctx.fillStyle='#fff';ctx.font='bold 103px system-ui';ctx.fillText('MUKHTAR',480,191);
+ ctx.fillStyle='#ff9923';ctx.font='bold 54px system-ui';ctx.fillText('20',865,135);ctx.fillText('26',865,190);
+ ctx.fillStyle='#fff';ctx.font='bold 34px system-ui';ctx.fillText('MUKHAYYAM TARBAWI',W/2,241);
+ ctx.fillStyle='#ffad4c';ctx.font='23px system-ui';ctx.fillText('PERTUBUHAN IKRAM MALAYSIA KUALA LUMPUR',W/2,280);
+ ctx.fillStyle='#f1f4ee';ctx.font='25px system-ui';ctx.fillText('7 – 9 NOV 2026  •  KINGFISHER ADVENTURES',W/2,332);
+ if(name){ctx.fillStyle='#ffcc85';ctx.font='bold 26px system-ui';ctx.fillText('RESOLUSI PERIBADI: '+name.slice(0,45),W/2,377);}
+ drawBand(392,'ZUHUD','Bersederhana dalam dunia',true);
+ const xTop=[48,386,724];const labels=['HARTA','MAKAN','PHONE','TAZKIYAH DIRI','DAKWAH'],icons=['💰','🍽️','📱','🤲','🌍'];
+ for(let i=0;i<3;i++)drawEntry(xTop[i],topY,308,topH,labels[i],icons[i],values[i]);
+ drawBand(amalBandY,'AMAL','Menghidupkan ibadah & dakwah',false);
+ drawEntry(48,bottomY,475,bottomH,labels[3],icons[3],values[3]);
+ drawEntry(557,bottomY,475,bottomH,labels[4],icons[4],values[4]);
+ ctx.textAlign='center';ctx.fillStyle='#d9e5db';ctx.font='24px system-ui';ctx.fillText('MUKHTAR 26  •  IKRAM Kuala Lumpur',W/2,H-48);
+ document.getElementById('cardPanel').classList.add('show');
+ document.getElementById('shareHint').textContent='Kad menggunakan reka bentuk poster asal. Ruang kosong bermaksud tiada resolusi diisi.';
+ document.getElementById('cardPanel').scrollIntoView({behavior:'smooth',block:'start'});
 }
 function cardBlob(){return new Promise(resolve=>canvas.toBlob(resolve,'image/png'));}
 async function downloadCard(){const blob=await cardBlob();if(!blob)return;const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='kad-resolusi-mukhtar-2026.png';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000);}
