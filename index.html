@@ -20,9 +20,10 @@
 .custom-name{margin-bottom:8px}
 .item .category-error{color:#a52c2c;font-size:13px;min-height:18px}
 [aria-invalid="true"]{border-color:#a52c2c}
+.whatsapp-panel{background:#fff;border-radius:18px;padding:20px;margin-top:18px}.whatsapp-panel h2{margin-top:0;font-size:21px}.whatsapp-panel label{display:block;margin-bottom:10px}.whatsapp-panel textarea{font-size:16px;min-height:280px}
 [hidden]{display:none!important}
 </style></head><body><div class="wrap"><header class="hero"><small>MUKHAYYAM TARBAWI · 7–9 NOV 2026</small><h1>RESOLUSI MUKHTAR '26</h1><p>Daripada muhasabah kepada amal</p></header><main class="sheet"><div class="name"><label for="nama">Nama (pilihan)</label><input id="nama" placeholder="Nama peserta"></div><section aria-labelledby="zuhudHeading"><h2 class="heading" id="zuhudHeading">ZUHUD <span>Bersederhana dalam dunia</span></h2><fieldset class="category-picker"><legend>Pilih sehingga 3 kategori ZUHUD</legend><div class="category-options" id="zuhudOptions"></div><p class="scope-status" id="zuhudStatus" aria-live="polite"></p></fieldset><div class="grid" id="zuhudEntries"></div><p class="empty-scope" id="zuhudEmpty">Pilih kategori di atas untuk menulis resolusi anda.</p></section>
-<section aria-labelledby="amalHeading"><h2 class="heading amal" id="amalHeading">AMAL <span>Menghidupkan ibadah &amp; dakwah</span></h2><fieldset class="category-picker"><legend>Pilih sehingga 3 kategori AMAL</legend><div class="category-options" id="amalOptions"></div><p class="scope-status" id="amalStatus" aria-live="polite"></p></fieldset><div class="grid" id="amalEntries"></div><p class="empty-scope" id="amalEmpty">Pilih kategori di atas untuk menulis resolusi anda.</p></section><div class="footer">MUKHTAR 2026 · Kuala Lumpur · Resolusi peribadi</div></main><div class="actions"><button type="button" onclick="generateCard()">🪪 Jana Kad Resolusi</button><button class="secondary" type="button" onclick="clearResolutions()">↺ Kosongkan</button></div><section id="cardPanel" class="card-panel" aria-live="polite"><h2>Kad Resolusi Saya</h2><p>Pratonton kad untuk disimpan atau dikongsi. Hanya jawapan yang diisi akan dipaparkan.</p><canvas id="resolutionCard" width="1080" height="1350" aria-label="Pratonton kad resolusi"></canvas><div class="actions"><button type="button" onclick="downloadCard()">⬇️ Simpan PNG</button><button type="button" onclick="shareCard()">📤 Kongsi Kad</button><button class="secondary" type="button" onclick="document.getElementById('cardPanel').classList.remove('show')">Tutup</button></div><p id="shareHint" class="note"></p></section><p class="note">Resolusi anda diproses dalam pelayar sahaja dan tidak dihantar ke server. Isi resolusi, jana kad, kemudian simpan sebagai imej atau kongsi melalui WhatsApp.</p></div><script>
+<section aria-labelledby="amalHeading"><h2 class="heading amal" id="amalHeading">AMAL <span>Menghidupkan ibadah &amp; dakwah</span></h2><fieldset class="category-picker"><legend>Pilih sehingga 3 kategori AMAL</legend><div class="category-options" id="amalOptions"></div><p class="scope-status" id="amalStatus" aria-live="polite"></p></fieldset><div class="grid" id="amalEntries"></div><p class="empty-scope" id="amalEmpty">Pilih kategori di atas untuk menulis resolusi anda.</p></section><div class="footer">MUKHTAR 2026 · Kuala Lumpur · Resolusi peribadi</div></main><div class="actions"><button type="button" onclick="generateCard()">🪪 Jana Kad Resolusi</button><button type="button" onclick="copyWhatsAppText()">Salin Teks WhatsApp</button><button class="secondary" type="button" onclick="clearResolutions()">↺ Kosongkan</button></div><section id="cardPanel" class="card-panel" aria-live="polite"><h2>Kad Resolusi Saya</h2><p>Pratonton kad untuk disimpan atau dikongsi. Hanya jawapan yang diisi akan dipaparkan.</p><canvas id="resolutionCard" width="1080" height="1350" aria-label="Pratonton kad resolusi"></canvas><div class="actions"><button type="button" onclick="downloadCard()">⬇️ Simpan PNG</button><button type="button" onclick="shareCard()">📤 Kongsi Kad</button><button type="button" onclick="copyWhatsAppText()">Salin Teks WhatsApp</button><button class="secondary" type="button" onclick="document.getElementById('cardPanel').classList.remove('show')">Tutup</button></div><p id="shareHint" class="note"></p></section><section id="whatsAppPanel" class="whatsapp-panel" hidden aria-labelledby="whatsAppHeading"><h2 id="whatsAppHeading">Teks WhatsApp</h2><label for="whatsAppText">Sedia untuk dikongsi</label><textarea id="whatsAppText" readonly rows="14"></textarea><p id="copyStatus" class="note" role="status"></p></section><p class="note">Resolusi anda diproses dalam pelayar sahaja dan tidak dihantar ke server. Isi resolusi, jana kad, kemudian simpan sebagai imej atau kongsi melalui WhatsApp.</p></div><script>
 const MAX_CATEGORIES=3;
 // Kategori dan contoh boleh dikemas kini di sini tanpa mengubah borang atau kad.
 const scopes=[
@@ -94,7 +95,7 @@ function addCustomCategory(scope){
  item.append(header,label,name,error,resolutionLabel,textarea);document.getElementById(scope.id+'Entries').append(item);
  updateScope(scope);name.focus();
 }
-function hideCard(){document.getElementById('cardPanel').classList.remove('show');}
+function hideCard(){document.getElementById('cardPanel').classList.remove('show');document.getElementById('whatsAppPanel').hidden=true;document.getElementById('whatsAppText').value='';document.getElementById('copyStatus').textContent='';}
 function updateScope(scope){
  const ids=selectedIds(scope);
  const count=selectionCount(scope);
@@ -216,8 +217,14 @@ function generateCard(){
  ctx.fillStyle=grad;ctx.fillRect(0,0,W,H);
  leaf(850,45,.65,.88);leaf(16,325,-.45,.6);leaf(900,H-70,-.8,.9);leaf(5,H-250,.5,.5);
  ctx.textAlign='center';ctx.fillStyle='#ff9923';ctx.font='bold 39px system-ui';ctx.fillText('RESOLUSI',W/2,76);
- ctx.fillStyle='#fff';ctx.font='bold 103px system-ui';ctx.fillText('MUKHTAR',480,191);
- ctx.fillStyle='#ff9923';ctx.font='bold 54px system-ui';ctx.fillText('20',865,135);ctx.fillText('26',865,190);
+ ctx.font='bold 103px system-ui';
+ const titleWidth=ctx.measureText('MUKHTAR').width;
+ ctx.font='bold 54px system-ui';
+ const yearWidth=Math.max(ctx.measureText('20').width,ctx.measureText('26').width);
+ const titleX=(W-titleWidth-18-yearWidth)/2;
+ ctx.textAlign='left';ctx.fillStyle='#fff';ctx.font='bold 103px system-ui';ctx.fillText('MUKHTAR',titleX,191);
+ ctx.fillStyle='#ff9923';ctx.font='bold 54px system-ui';ctx.fillText('20',titleX+titleWidth+18,135);ctx.fillText('26',titleX+titleWidth+18,190);
+ ctx.textAlign='center';
  ctx.fillStyle='#fff';ctx.font='bold 34px system-ui';ctx.fillText('MUKHAYYAM TARBAWI',W/2,241);
  ctx.fillStyle='#ffad4c';ctx.font='23px system-ui';ctx.fillText('PERTUBUHAN IKRAM MALAYSIA KUALA LUMPUR',W/2,280);
  ctx.fillStyle='#f1f4ee';ctx.font='25px system-ui';ctx.fillText('7 – 9 NOV 2026  •  KINGFISHER ADVENTURES',W/2,332);
@@ -230,6 +237,34 @@ function generateCard(){
  document.getElementById('cardPanel').classList.add('show');
  document.getElementById('shareHint').textContent='Kad memaparkan kategori yang dipilih dan resolusi yang diisi sahaja.';
  document.getElementById('cardPanel').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function whatsAppCopywriting(groups,name){
+ const lines=["*RESOLUSI PERIBADI MUKHTAR '26*",'Daripada muhasabah kepada amal'];
+ if(name.trim())lines.push('','Nama: '+name.trim());
+ groups.forEach(group=>{
+  lines.push('','*'+group.title+'*',group.subtitle);
+  group.entries.forEach(entry=>{
+   lines.push('',entry.icon+' *'+entry.label+'*',entry.value);
+  });
+ });
+ lines.push('','Semoga Allah mengurniakan keikhlasan dan istiqamah untuk melaksanakan azam ini. Aamiin.');
+ return lines.join('\n');
+}
+async function copyWhatsAppText(){
+ let groups;
+ try{groups=collectEntries();}catch(error){alert(error.message);return;}
+ if(!groups.length){alert('Pilih kategori dan isi sekurang-kurangnya satu resolusi dahulu.');return;}
+ const text=whatsAppCopywriting(groups,document.getElementById('nama').value);
+ const panel=document.getElementById('whatsAppPanel'),field=document.getElementById('whatsAppText'),status=document.getElementById('copyStatus');
+ field.value=text;panel.hidden=false;
+ try{
+  await navigator.clipboard.writeText(text);
+  status.textContent='Teks berjaya disalin. Buka WhatsApp dan tampal pada chat atau kumpulan pilihan anda.';
+ }catch(error){
+  field.focus();field.select();
+  status.textContent='Salinan automatik tidak tersedia. Teks telah dipilih; tekan Salin / Copy, kemudian tampal dalam WhatsApp.';
+ }
+ panel.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 function cardBlob(){return new Promise(resolve=>canvas.toBlob(resolve,'image/png'));}
 async function downloadCard(){const blob=await cardBlob();if(!blob)return;const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='kad-resolusi-mukhtar-2026.png';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000);}
