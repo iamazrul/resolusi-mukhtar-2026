@@ -1,5 +1,101 @@
-<!doctype html><html lang="ms"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Resolusi Peribadi MUKHTAR 2026</title><style>:root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#17382d;background:#eef3ef}*{box-sizing:border-box}body{margin:0}.wrap{max-width:850px;margin:auto;padding:22px}.hero{background:#063323;color:white;text-align:center;padding:35px 18px;border-radius:20px 20px 0 0}.hero small{color:#ff9d25;font-weight:800;letter-spacing:2px}.hero h1{font-size:clamp(26px,5vw,42px);margin:8px 0}.hero p{margin:0;color:#d5e4d8}.sheet{background:white;padding:26px 32px;border-radius:0 0 20px 20px;box-shadow:0 10px 35px #163c2c17}.name{display:flex;gap:12px;align-items:center;margin-bottom:24px}.name label{font-weight:650;white-space:nowrap}input,textarea{font:inherit;border:1px solid #b9c9c0;border-radius:9px;padding:12px;width:100%;background:#fff;color:#17382d}textarea{min-height:95px;resize:vertical}.heading{background:#ff9d25;border-radius:12px;padding:13px 17px;margin:25px 0 15px;font-size:21px;font-weight:800}.heading span{font-size:14px;font-weight:500;margin-left:12px}.heading.amal{background:#e7eee9}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.item{border:1px solid #d4e1d8;border-radius:13px;padding:15px;break-inside:avoid}.item h3{color:#bb6810;margin:0 0 8px;font-size:17px}.item p{font-size:12px;color:#5c7066;margin:0 0 10px}.item textarea{min-height:115px}.actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:18px 0}.actions button{background:#073b2a;color:white;border:0;border-radius:10px;padding:13px 20px;font:inherit;cursor:pointer}.actions button.secondary{background:#e0eae3;color:#153e2c}.note{text-align:center;color:#5b6e64;font-size:13px}.footer{text-align:center;font-size:12px;color:#63766a;margin-top:22px}@media(max-width:600px){.wrap{padding:10px}.sheet{padding:18px}.grid{grid-template-columns:1fr}.heading span{display:block;margin:3px 0 0}.name{display:block}.name input{margin-top:8px}}@media print{@page{size:A4;margin:12mm}body{background:white}.wrap{padding:0;max-width:none}.hero{border-radius:0;padding:20px}.hero h1{font-size:28px}.sheet{box-shadow:none;border-radius:0;padding:16px 4px}.actions,.note{display:none}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.item{padding:10px}.item textarea{min-height:90px;border:0;padding:2px;resize:none;overflow:visible}.name input{border:0;border-bottom:1px solid #aaa;border-radius:0}.heading{margin:15px 0 10px;padding:9px 13px;font-size:18px}.item p{font-size:10px}.item h3{font-size:14px}textarea{font-size:12px}body{-webkit-print-color-adjust:exact;print-color-adjust:exact}} .card-panel{display:none;background:#fff;padding:20px;border-radius:18px;margin-top:18px;text-align:center;box-shadow:0 8px 30px #163c2c17}.card-panel.show{display:block}.card-panel canvas{display:block;width:100%;max-width:560px;height:auto;margin:12px auto;border-radius:12px;box-shadow:0 5px 20px #0002}.card-panel h2{margin:0;color:#073b2a}.card-panel p{font-size:13px;color:#64786a}.card-panel .actions{margin-bottom:0}@media print{.card-panel{display:none!important}}</style></head><body><div class="wrap"><header class="hero"><small>MUKHAYYAM TARBAWI · 7–9 NOV 2026</small><h1>RESOLUSI MUKHTAR '26</h1><p>Daripada muhasabah kepada amal</p></header><main class="sheet"><div class="name"><label for="nama">Nama (pilihan)</label><input id="nama" placeholder="Nama peserta"></div><div class="heading">ZUHUD <span>Bersederhana dalam dunia</span></div><section class="grid"><div class="item"><h3>💰 Harta</h3><p>Contoh: konsep basatah dan kesederhanaan dalam perbelanjaan</p><textarea aria-label="Resolusi harta" placeholder="Saya berazam untuk..."></textarea></div><div class="item"><h3>🍽️ Makan</h3><p>Contoh: makan sederhana dan puasa sunat</p><textarea aria-label="Resolusi makan" placeholder="Saya berazam untuk..."></textarea></div><div class="item"><h3>📱 Telefon / Digital</h3><p>Contoh: kurangkan screen time dan wujudkan zon tanpa telefon</p><textarea aria-label="Resolusi telefon" placeholder="Saya berazam untuk..."></textarea></div></section><div class="heading amal">AMAL <span>Menghidupkan ibadah & dakwah</span></div><section class="grid"><div class="item"><h3>🤲 Tazkiyah Diri</h3><p>Contoh: zikir, qiamullail, hafazan, tadabbur dan infaq</p><textarea aria-label="Resolusi tazkiyah diri" placeholder="Saya berazam untuk..."></textarea></div><div class="item"><h3>🌍 Dakwah</h3><p>Contoh: usrah keluarga dan penglibatan dalam medan dakwah</p><textarea aria-label="Resolusi dakwah" placeholder="Saya berazam untuk..."></textarea></div></section><div class="footer">MUKHTAR 2026 · Kuala Lumpur · Resolusi peribadi</div></main><div class="actions"><button type="button" onclick="generateCard()">🪪 Jana Kad Resolusi</button><button class="secondary" onclick="if(confirm('Kosongkan semua jawapan?')){document.querySelectorAll('input,textarea').forEach(x=>x.value='')}">↺ Kosongkan</button></div><section id="cardPanel" class="card-panel" aria-live="polite"><h2>Kad Resolusi Saya</h2><p>Pratonton kad untuk disimpan atau dikongsi. Hanya jawapan yang diisi akan dipaparkan.</p><canvas id="resolutionCard" width="1080" height="1350" aria-label="Pratonton kad resolusi"></canvas><div class="actions"><button type="button" onclick="downloadCard()">⬇️ Simpan PNG</button><button type="button" onclick="shareCard()">📤 Kongsi Kad</button><button class="secondary" type="button" onclick="document.getElementById('cardPanel').classList.remove('show')">Tutup</button></div><p id="shareHint" class="note"></p></section><p class="note">Resolusi anda diproses dalam pelayar sahaja dan tidak dihantar ke server. Isi resolusi, jana kad, kemudian simpan sebagai imej atau kongsi melalui WhatsApp.</p></div><script>
-const titles=['Harta','Makan','Telefon / Digital','Tazkiyah Diri','Dakwah'];
+<!doctype html><html lang="ms"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Resolusi Peribadi MUKHTAR 2026</title><style>:root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#17382d;background:#eef3ef}*{box-sizing:border-box}body{margin:0}.wrap{max-width:850px;margin:auto;padding:22px}.hero{background:#063323;color:white;text-align:center;padding:35px 18px;border-radius:20px 20px 0 0}.hero small{color:#ff9d25;font-weight:800;letter-spacing:2px}.hero h1{font-size:clamp(26px,5vw,42px);margin:8px 0}.hero p{margin:0;color:#d5e4d8}.sheet{background:white;padding:26px 32px;border-radius:0 0 20px 20px;box-shadow:0 10px 35px #163c2c17}.name{display:flex;gap:12px;align-items:center;margin-bottom:24px}.name label{font-weight:650;white-space:nowrap}input,textarea{font:inherit;border:1px solid #b9c9c0;border-radius:9px;padding:12px;width:100%;background:#fff;color:#17382d}textarea{min-height:95px;resize:vertical}.heading{background:#ff9d25;border-radius:12px;padding:13px 17px;margin:25px 0 15px;font-size:21px;font-weight:800}.heading span{font-size:14px;font-weight:500;margin-left:12px}.heading.amal{background:#e7eee9}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.item{border:1px solid #d4e1d8;border-radius:13px;padding:15px;break-inside:avoid}.item h3{color:#bb6810;margin:0 0 8px;font-size:17px}.item p{font-size:12px;color:#5c7066;margin:0 0 10px}.item textarea{min-height:115px}.actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:18px 0}.actions button{background:#073b2a;color:white;border:0;border-radius:10px;padding:13px 20px;font:inherit;cursor:pointer}.actions button.secondary{background:#e0eae3;color:#153e2c}.note{text-align:center;color:#5b6e64;font-size:13px}.footer{text-align:center;font-size:12px;color:#63766a;margin-top:22px}@media(max-width:600px){.wrap{padding:10px}.sheet{padding:18px}.grid{grid-template-columns:1fr}.heading span{display:block;margin:3px 0 0}.name{display:block}.name input{margin-top:8px}}@media print{@page{size:A4;margin:12mm}body{background:white}.wrap{padding:0;max-width:none}.hero{border-radius:0;padding:20px}.hero h1{font-size:28px}.sheet{box-shadow:none;border-radius:0;padding:16px 4px}.actions,.note{display:none}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.item{padding:10px}.item textarea{min-height:90px;border:0;padding:2px;resize:none;overflow:visible}.name input{border:0;border-bottom:1px solid #aaa;border-radius:0}.heading{margin:15px 0 10px;padding:9px 13px;font-size:18px}.item p{font-size:10px}.item h3{font-size:14px}textarea{font-size:12px}body{-webkit-print-color-adjust:exact;print-color-adjust:exact}} .card-panel{display:none;background:#fff;padding:20px;border-radius:18px;margin-top:18px;text-align:center;box-shadow:0 8px 30px #163c2c17}.card-panel.show{display:block}.card-panel canvas{display:block;width:100%;max-width:560px;height:auto;margin:12px auto;border-radius:12px;box-shadow:0 5px 20px #0002}.card-panel h2{margin:0;color:#073b2a}.card-panel p{font-size:13px;color:#64786a}.card-panel .actions{margin-bottom:0}@media print{.card-panel{display:none!important}}
+.category-picker{border:0;padding:0;margin:0 0 18px;min-width:0}
+.category-picker legend{font-size:14px;color:#5c7066;margin-bottom:12px}
+.category-options{display:flex;flex-wrap:wrap;gap:9px}
+.category-choice{position:relative;display:inline-flex}
+.category-choice input{position:absolute;opacity:0;width:1px;height:1px;padding:0}
+.category-choice span{display:block;padding:11px 15px;border:1px solid #b9c9c0;border-radius:24px;cursor:pointer}
+.category-choice input:checked+span{background:#073b2a;border-color:#073b2a;color:white}
+.category-choice input:focus-visible+span{outline:3px solid #ff9d25;outline-offset:3px}
+.category-choice input:disabled+span{opacity:.45;cursor:not-allowed}
+.scope-status{font-size:13px;color:#5c7066;margin:12px 0 0}
+.empty-scope{font-size:14px;color:#5c7066;padding:18px;border:1px dashed #b9c9c0;border-radius:12px}
+.item label{display:block;color:#bb6810;font-weight:700;margin:0 0 8px;font-size:17px}
+[hidden]{display:none!important}
+</style></head><body><div class="wrap"><header class="hero"><small>MUKHAYYAM TARBAWI · 7–9 NOV 2026</small><h1>RESOLUSI MUKHTAR '26</h1><p>Daripada muhasabah kepada amal</p></header><main class="sheet"><div class="name"><label for="nama">Nama (pilihan)</label><input id="nama" placeholder="Nama peserta"></div><section aria-labelledby="zuhudHeading"><h2 class="heading" id="zuhudHeading">ZUHUD <span>Bersederhana dalam dunia</span></h2><fieldset class="category-picker"><legend>Pilih sehingga 3 kategori ZUHUD</legend><div class="category-options" id="zuhudOptions"></div><p class="scope-status" id="zuhudStatus" aria-live="polite"></p></fieldset><div class="grid" id="zuhudEntries"></div><p class="empty-scope" id="zuhudEmpty">Pilih kategori di atas untuk menulis resolusi anda.</p></section>
+<section aria-labelledby="amalHeading"><h2 class="heading amal" id="amalHeading">AMAL <span>Menghidupkan ibadah &amp; dakwah</span></h2><fieldset class="category-picker"><legend>Pilih sehingga 3 kategori AMAL</legend><div class="category-options" id="amalOptions"></div><p class="scope-status" id="amalStatus" aria-live="polite"></p></fieldset><div class="grid" id="amalEntries"></div><p class="empty-scope" id="amalEmpty">Pilih kategori di atas untuk menulis resolusi anda.</p></section><div class="footer">MUKHTAR 2026 · Kuala Lumpur · Resolusi peribadi</div></main><div class="actions"><button type="button" onclick="generateCard()">🪪 Jana Kad Resolusi</button><button class="secondary" type="button" onclick="clearResolutions()">↺ Kosongkan</button></div><section id="cardPanel" class="card-panel" aria-live="polite"><h2>Kad Resolusi Saya</h2><p>Pratonton kad untuk disimpan atau dikongsi. Hanya jawapan yang diisi akan dipaparkan.</p><canvas id="resolutionCard" width="1080" height="1350" aria-label="Pratonton kad resolusi"></canvas><div class="actions"><button type="button" onclick="downloadCard()">⬇️ Simpan PNG</button><button type="button" onclick="shareCard()">📤 Kongsi Kad</button><button class="secondary" type="button" onclick="document.getElementById('cardPanel').classList.remove('show')">Tutup</button></div><p id="shareHint" class="note"></p></section><p class="note">Resolusi anda diproses dalam pelayar sahaja dan tidak dihantar ke server. Isi resolusi, jana kad, kemudian simpan sebagai imej atau kongsi melalui WhatsApp.</p></div><script>
+const MAX_CATEGORIES=3;
+// Kategori dan contoh boleh dikemas kini di sini tanpa mengubah borang atau kad.
+const scopes=[
+ {id:'zuhud',title:'ZUHUD',subtitle:'Bersederhana dalam dunia',categories:[
+  {id:'harta',label:'Harta',icon:'💰',example:'Konsep basatah dan kesederhanaan dalam perbelanjaan'},
+  {id:'makan',label:'Makan',icon:'🍽️',example:'Makan sederhana dan elakkan pembaziran'},
+  {id:'phone',label:'Phone',icon:'📱',example:'Kurangkan screen time dan wujudkan zon tanpa telefon'},
+  {id:'pakaian',label:'Pakaian',icon:'👕',example:'Berpakaian sederhana dan manfaatkan pakaian sedia ada'},
+  {id:'hiburan',label:'Hiburan',icon:'🎧',example:'Hadkan hiburan dan pilih pengisian bermanfaat'}
+ ]},
+ {id:'amal',title:'AMAL',subtitle:'Menghidupkan ibadah & dakwah',categories:[
+  {id:'tazkiyah',label:'Tazkiyah Diri',icon:'🤲',example:'Zikir, qiamullail, hafazan dan tadabbur'},
+  {id:'dakwah',label:'Dakwah',icon:'🌍',example:'Usrah keluarga dan penglibatan dalam medan dakwah'},
+  {id:'ilmu',label:'Ilmu',icon:'📚',example:'Membaca, menghadiri kuliah dan berkongsi ilmu'},
+  {id:'infaq',label:'Infaq',icon:'🤝',example:'Tetapkan infaq berkala mengikut kemampuan'},
+  {id:'khidmat',label:'Khidmat Masyarakat',icon:'🏘️',example:'Bantu jiran dan sertai aktiviti kesukarelawanan'}
+ ]}
+];
+function selectedIds(scope){
+ return [...document.querySelectorAll('#'+scope.id+'Options input:checked')].map(input=>input.value);
+}
+function hideCard(){document.getElementById('cardPanel').classList.remove('show');}
+function updateScope(scope){
+ const ids=selectedIds(scope);
+ document.querySelectorAll('#'+scope.id+'Options input').forEach(input=>{
+  input.disabled=!input.checked&&ids.length>=MAX_CATEGORIES;
+ });
+ scope.categories.forEach(category=>{
+  document.getElementById(scope.id+'-'+category.id+'Entry').hidden=!ids.includes(category.id);
+ });
+ document.getElementById(scope.id+'Empty').hidden=ids.length>0;
+ document.getElementById(scope.id+'Status').textContent=ids.length+' / '+MAX_CATEGORIES+' kategori dipilih.'+(ids.length>=MAX_CATEGORIES?' Nyahpilih satu kategori untuk menukar pilihan.':' Setiap kategori hanya boleh dipilih sekali.');
+ hideCard();
+}
+function initScopes(){
+ scopes.forEach(scope=>{
+  const options=document.getElementById(scope.id+'Options');
+  const entries=document.getElementById(scope.id+'Entries');
+  scope.categories.forEach(category=>{
+   const id=scope.id+'-'+category.id;
+   const choice=document.createElement('label');choice.className='category-choice';
+   const input=document.createElement('input');input.type='checkbox';input.value=category.id;
+   input.setAttribute('aria-controls',id+'Entry');input.setAttribute('aria-describedby',scope.id+'Status');
+   const caption=document.createElement('span');caption.textContent=category.icon+' '+category.label;
+   choice.append(input,caption);options.append(choice);
+   const item=document.createElement('div');item.className='item';item.id=id+'Entry';item.hidden=true;
+   const label=document.createElement('label');label.htmlFor=id;label.textContent=category.icon+' '+category.label;
+   const example=document.createElement('p');example.id=id+'Example';example.textContent='Contoh: '+category.example;
+   const textarea=document.createElement('textarea');textarea.id=id;textarea.placeholder='Saya berazam untuk...';
+   textarea.setAttribute('aria-describedby',example.id);textarea.addEventListener('input',hideCard);
+   item.append(label,example,textarea);entries.append(item);
+   input.addEventListener('change',()=>{
+    if(selectedIds(scope).length>MAX_CATEGORIES){input.checked=false;}
+    updateScope(scope);
+   });
+  });
+  updateScope(scope);
+ });
+ document.getElementById('nama').addEventListener('input',hideCard);
+}
+function clearResolutions(){
+ if(!confirm('Kosongkan semua pilihan dan jawapan?'))return;
+ document.getElementById('nama').value='';
+ document.querySelectorAll('.category-options input').forEach(input=>{input.checked=false;});
+ document.querySelectorAll('.item textarea').forEach(input=>{input.value='';});
+ scopes.forEach(updateScope);
+}
+function collectEntries(){
+ const used=new Set();
+ return scopes.map(scope=>{
+  const ids=selectedIds(scope);
+  if(ids.length>MAX_CATEGORIES||new Set(ids).size!==ids.length)throw new Error('Pilih maksimum 3 kategori berbeza bagi setiap skop.');
+  const entries=ids.map(id=>{
+   const category=scope.categories.find(item=>item.id===id);
+   if(!category||used.has(id))throw new Error('Kategori yang sama tidak boleh dipilih berulang.');
+   used.add(id);
+   return {...category,value:document.getElementById(scope.id+'-'+id).value.trim()};
+  }).filter(entry=>entry.value);
+  return {...scope,entries};
+ }).filter(scope=>scope.entries.length);
+}
+initScopes();
 const canvas=document.getElementById('resolutionCard');
 const ctx=canvas.getContext('2d');
 function linesFor(text,maxWidth,font){ctx.font=font;const out=[];for(const para of text.split(/\n/)){let line='';for(const word of para.split(/\s+/).filter(Boolean)){const next=line?line+' '+word:word;if(ctx.measureText(next).width>maxWidth&&line){out.push(line);line=word;}else line=next;}out.push(line||' ');}return out;}
@@ -20,7 +116,7 @@ function drawEntry(x,y,w,h,label,emoji,value){
  roundBox(x,y,w,h,25,'rgba(235,244,235,0.13)','rgba(232,245,230,0.55)');
  ctx.textAlign='center';ctx.fillStyle='#ff9923';ctx.beginPath();ctx.arc(x+w/2,y+7,44,0,Math.PI*2);ctx.fill();
  ctx.font='43px system-ui';ctx.fillStyle='#fff';ctx.fillText(emoji,x+w/2,y+22);
- ctx.font='bold 32px system-ui';ctx.fillStyle='#ffa12b';ctx.fillText(label,x+w/2,y+88);
+ ctx.font='bold 32px system-ui';ctx.fillStyle='#ffa12b';ctx.fillText(label,x+w/2,y+88,w-36);
  ctx.textAlign='left';ctx.fillStyle='#fff';ctx.font='29px system-ui';
  const lines=linesFor(value||'—',w-58,'29px system-ui');
  lines.forEach((line,i)=>ctx.fillText(line,x+28,y+136+i*40));
@@ -31,14 +127,20 @@ function drawBand(y,title,subtitle,orange){
  ctx.font='26px system-ui';ctx.fillText(subtitle,orange?300:262,y+51);
 }
 function generateCard(){
- const values=[...document.querySelectorAll('.item textarea')].map(el=>el.value.trim());
- if(!values.some(Boolean)){alert('Isi sekurang-kurangnya satu resolusi dahulu.');return;}
+ let groups;
+ try{groups=collectEntries();}catch(error){alert(error.message);return;}
+ if(!groups.length){alert('Pilih kategori dan isi sekurang-kurangnya satu resolusi dahulu.');return;}
  const name=document.getElementById('nama').value.trim();
- const top=[0,1,2].map(i=>measureEntry(values[i],260));
- const bottom=[3,4].map(i=>measureEntry(values[i],400));
- const topH=Math.max(...top.map(x=>x.height)),bottomH=Math.max(...bottom.map(x=>x.height));
- const W=1080,topY=490,amalBandY=topY+topH+62,bottomY=amalBandY+139;
- const H=bottomY+bottomH+135;
+ const W=1080;
+ let nextY=392;
+ const layout=groups.map(group=>{
+  const width=(984-(group.entries.length-1)*30)/group.entries.length;
+  const height=Math.max(...group.entries.map(entry=>measureEntry(entry.value,width-58).height));
+  const row={...group,width,height,bandY:nextY,entryY:nextY+139};
+  nextY=row.entryY+height+62;
+  return row;
+ });
+ const H=nextY+73;
  canvas.width=W;canvas.height=H;
  const grad=ctx.createLinearGradient(0,0,W,H);grad.addColorStop(0,'#00291c');grad.addColorStop(.58,'#083527');grad.addColorStop(1,'#002b1c');
  ctx.fillStyle=grad;ctx.fillRect(0,0,W,H);
@@ -50,15 +152,13 @@ function generateCard(){
  ctx.fillStyle='#ffad4c';ctx.font='23px system-ui';ctx.fillText('PERTUBUHAN IKRAM MALAYSIA KUALA LUMPUR',W/2,280);
  ctx.fillStyle='#f1f4ee';ctx.font='25px system-ui';ctx.fillText('7 – 9 NOV 2026  •  KINGFISHER ADVENTURES',W/2,332);
  if(name){ctx.fillStyle='#ffcc85';ctx.font='bold 26px system-ui';ctx.fillText('RESOLUSI PERIBADI: '+name.slice(0,45),W/2,377);}
- drawBand(392,'ZUHUD','Bersederhana dalam dunia',true);
- const xTop=[48,386,724];const labels=['HARTA','MAKAN','PHONE','TAZKIYAH DIRI','DAKWAH'],icons=['💰','🍽️','📱','🤲','🌍'];
- for(let i=0;i<3;i++)drawEntry(xTop[i],topY,308,topH,labels[i],icons[i],values[i]);
- drawBand(amalBandY,'AMAL','Menghidupkan ibadah & dakwah',false);
- drawEntry(48,bottomY,475,bottomH,labels[3],icons[3],values[3]);
- drawEntry(557,bottomY,475,bottomH,labels[4],icons[4],values[4]);
+ layout.forEach(group=>{
+  drawBand(group.bandY,group.title,group.subtitle,group.id==='zuhud');
+  group.entries.forEach((entry,index)=>drawEntry(48+index*(group.width+30),group.entryY,group.width,group.height,entry.label.toUpperCase(),entry.icon,entry.value));
+ });
  ctx.textAlign='center';ctx.fillStyle='#d9e5db';ctx.font='24px system-ui';ctx.fillText('MUKHTAR 26  •  IKRAM Kuala Lumpur',W/2,H-48);
  document.getElementById('cardPanel').classList.add('show');
- document.getElementById('shareHint').textContent='Kad menggunakan reka bentuk poster asal. Ruang kosong bermaksud tiada resolusi diisi.';
+ document.getElementById('shareHint').textContent='Kad memaparkan kategori yang dipilih dan resolusi yang diisi sahaja.';
  document.getElementById('cardPanel').scrollIntoView({behavior:'smooth',block:'start'});
 }
 function cardBlob(){return new Promise(resolve=>canvas.toBlob(resolve,'image/png'));}
